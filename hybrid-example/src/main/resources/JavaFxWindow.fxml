@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.embed.swing.SwingNode?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+         prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/13.0.1"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox fx:id="panelUp" BorderPane.alignment="CENTER">
+            <children>
+                <ComboBox fx:id="comboBox" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+            </children>
+        </HBox>
+    </top>
+    <bottom>
+        <HBox fx:id="panelDown" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <TitledPane fx:id="titledPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                            text="South Panel" HBox.hgrow="ALWAYS">
+                    <content>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" text="Button1" HBox.hgrow="ALWAYS"/>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" text="Button2" HBox.hgrow="ALWAYS"/>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" text="Button3" HBox.hgrow="ALWAYS"/>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" text="Button4" HBox.hgrow="ALWAYS"/>
+                            </children>
+                        </HBox>
+                    </content>
+                </TitledPane>
+            </children>
+        </HBox>
+    </bottom>
+    <left>
+        <VBox fx:id="panelLeft" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        text="Left Panel" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+    </left>
+    <right>
+        <VBox fx:id="panelRight" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                        text="Right Panel" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+    </right>
+    <center>
+        <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ParentPanel"
+                    BorderPane.alignment="CENTER">
+            <content>
+                <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0"
+                            prefWidth="200.0" text="ChildPanel1">
+                    <content>
+                        <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                    prefHeight="200.0" prefWidth="200.0" text="ChildPanel2">
+                            <content>
+                                <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                            prefHeight="200.0" prefWidth="200.0" text="ChildPanel3">
+                                    <content>
+                                        <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                                    prefHeight="200.0" prefWidth="200.0" text="ChildPanel4">
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </padding>
+                                            <content>
+                                                <SwingNode fx:id="swingNode"/>
+                                            </content>
+                                        </TitledPane>
+                                    </content>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                    </padding>
+                                </TitledPane>
+                            </content>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </TitledPane>
+                    </content>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                </TitledPane>
+            </content>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </TitledPane>
+    </center>
+</fx:root>
