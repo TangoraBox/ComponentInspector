@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
+    <name>component-inspector</name>
 
-    <url>https://tangorabox.com</url>
+    <url>https://github.com/TangoraBox/ComponentInspector</url>
+    <description>Java Desktop (JavaFX and Swing) Component Inspector on mouse over </description>
 
     <modules>
         <module>component-inspector-core</module>
@@ -24,7 +24,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.release>11</java.release>
+        <project.inceptionYear>2020</project.inceptionYear>
     </properties>
+
+    <issueManagement>
+        <url>https://github.com/TangoraBox/ComponentInspector/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>GNU GPL v3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+        </license>
+    </licenses>
+
 
     <distributionManagement>
         <snapshotRepository>
@@ -44,6 +58,24 @@
         <url>https://github.com/TangoraBox/ComponentInspector</url>
         <tag>HEAD</tag>
     </scm>
+
+    <organization>
+        <name>ComponentInspector by Tangorabox.com</name>
+        <url>https://tangorabox.com</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>GaRzY</name>
+            <email>info@tangorabox.com</email>
+            <url>https://github.com/garzy</url>
+            <id>GaRzY</id>
+            <roles>
+                <role>Founder</role>
+                <role>Maintainer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <build>
         <plugins>
@@ -77,7 +109,7 @@
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
                     <mavenExecutorId>forked-path</mavenExecutorId>
-                    <!--<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>-->
+                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
                 </configuration>
                 <dependencies>
                     <dependency>

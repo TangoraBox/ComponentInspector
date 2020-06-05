@@ -24,6 +24,12 @@
             <artifactId>javafx-graphics</artifactId>
             <version>11.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>11.0.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>
