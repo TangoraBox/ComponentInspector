@@ -40,11 +40,13 @@ SwingComponentInspectorHandler.handleAll();
 
 ---
 
-## Installation (Currently not available, coming soon)
+## Installation 
 
 > Currently, I've created the artifact for openjdk 11+ and openjfx 11+ but if you need target java 8 version, please open an issue.
 
 ### Maven
+
+The artifacts have been published to maven central
 
 ***FXComponentInspector***
 
@@ -52,7 +54,7 @@ SwingComponentInspectorHandler.handleAll();
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>[LATEST_VERSION]</version>
+    <version>1.0</version>
 </dependency>
 ```
 
@@ -62,7 +64,7 @@ SwingComponentInspectorHandler.handleAll();
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>[LATEST_VERSION]</version>
+    <version>1.0</version>
 </dependency>
 ```
 
