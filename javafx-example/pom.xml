@@ -4,18 +4,18 @@
     <parent>
         <groupId>com.tangorabox</groupId>
         <artifactId>component-inspector</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>javafx-example</artifactId>
     <name>javafx-example</name>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>com.tangorabox</groupId>
             <artifactId>component-inspector-fx</artifactId>
-            <version>1.0</version>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
