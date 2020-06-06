@@ -2,8 +2,9 @@ package com.tangorabox.componentinspector.core;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
+import java.util.Optional;
+
 
 public class ObjectMetadataExtractor {
 
@@ -14,25 +15,18 @@ public class ObjectMetadataExtractor {
 	}
 
 	private static <T> String findFieldNameInHierarchy(T component, T parent, AbstractComponentInspector<T> inspector) {
-		String result = null;
-		if (parent != null) {
-			String fieldNameInParent = null;
-			List<Field> parentFieldsOfSameClassOfComponent = Arrays.stream(parent.getClass().getDeclaredFields())
+         return Optional.ofNullable(parent)
+			.map(parentComponent ->
+			  Arrays.stream(parentComponent.getClass().getDeclaredFields())
 					.filter(field -> field.getType() == component.getClass())
-					.collect(Collectors.toList());
+					.map(parentField->  getFieldNameInParent(component, parentComponent, parentField))
+					.filter(Objects::nonNull)
+					.findFirst()
+					.orElseGet(()->findFieldNameInHierarchy(component, inspector.getParent(parent), inspector))
+			).orElse(null);
 
-			for(int i = 0; i < parentFieldsOfSameClassOfComponent.size() && fieldNameInParent == null; i++) {
-				fieldNameInParent = getFieldNameInParent(component, parent, parentFieldsOfSameClassOfComponent.get(i));
-			}
-
-			if (fieldNameInParent != null) {
-				result = fieldNameInParent;
-			} else {
-				result = findFieldNameInHierarchy(component, inspector.getParent(parent), inspector);
-			}
-		}
-		return result;
 	}
+
 
 	private static String getFieldNameInParent(Object component, Object parent, Field field) {
 		try {
