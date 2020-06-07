@@ -9,6 +9,7 @@ import com.tangorabox.componentinspector.swing.styling.SwingCSSStyleDecorator;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Optional;
 
 public class SwingComponentInspector extends AbstractComponentInspector<Component> {
 
@@ -23,13 +24,10 @@ public class SwingComponentInspector extends AbstractComponentInspector<Componen
     }
 
     @Override
-    protected Component createFieldNameComponent(Component component) {
-        String fieldName = ObjectMetadataExtractor.getDeclaredFieldNameInParent(component, this);
-        if (fieldName == null) {
-            return null;
-        }
-        JLabel result = new JLabel(fieldName);
-        return cssStyleDecorator.decorate(result, CSSStyleClass.FIELD_COMPONENT);
+    protected Optional<Component> createFieldNameComponent(Component component) {
+         return new ObjectMetadataExtractor<>(component,this)
+                 .getDeclaredFieldNameInParent()
+                  .map((fieldName) -> cssStyleDecorator.decorate(new JLabel(fieldName), CSSStyleClass.FIELD_COMPONENT));
     }
 
     @Override

@@ -4,6 +4,7 @@ package com.tangorabox.componentinspector.core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public abstract class AbstractComponentInspector<T> {
@@ -34,7 +35,7 @@ public abstract class AbstractComponentInspector<T> {
 
 	private ComponentDetails<T> createComponentDetails(T component) {
 		ComponentDetails<T> details = new ComponentDetails<>();
-		details.setFieldNameComponent(createFieldNameComponent(component));
+		details.setFieldNameComponent(createFieldNameComponent(component).orElseGet(()->null));
 		details.setClassComponent(createClassComponent(component));
 		details.setStylesComponent(createStylesComponent(component));
 		return  details;
@@ -42,7 +43,7 @@ public abstract class AbstractComponentInspector<T> {
 
 	protected abstract T getParent(T component);
 
-	protected abstract T createFieldNameComponent(T component);
+	protected abstract Optional<T> createFieldNameComponent(T component);
 
 	protected abstract T createClassComponent(T component);
 

@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 import java.util.List;
+import java.util.Optional;
 
 public class FXComponentInspector extends AbstractComponentInspector<Node> {
 
@@ -21,15 +22,13 @@ public class FXComponentInspector extends AbstractComponentInspector<Node> {
     }
 
     @Override
-    protected Node createFieldNameComponent(Node component) {
-        String fieldName = ObjectMetadataExtractor.getDeclaredFieldNameInParent(component, this);
-        if (fieldName == null) {
-            return null;
-        }
-
-        Label result = new Label(fieldName);
-        result.getStyleClass().add(CSSStyleClass.FIELD_COMPONENT.getCssClassName());
-        return result;
+    protected Optional<Node> createFieldNameComponent(Node component) {
+        return new ObjectMetadataExtractor<>(component, this).getDeclaredFieldNameInParent()
+                .map((fieldName) -> {
+                    Label result = new Label(fieldName);
+                    result.getStyleClass().add(CSSStyleClass.FIELD_COMPONENT.getCssClassName());
+                    return result;
+                });
     }
 
     @Override

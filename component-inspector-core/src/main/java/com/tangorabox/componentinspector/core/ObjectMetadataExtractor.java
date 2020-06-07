@@ -6,29 +6,35 @@ import java.util.Objects;
 import java.util.Optional;
 
 
-public class ObjectMetadataExtractor {
+public class ObjectMetadataExtractor<T> {
 
-	private ObjectMetadataExtractor() {}
+	private final T component;
+	private final AbstractComponentInspector<T> inspector;
 
-	public static <T> String getDeclaredFieldNameInParent(T component, AbstractComponentInspector<T> inspector) {
-		return findFieldNameInHierarchy(component, inspector.getParent(component), inspector);
+	public ObjectMetadataExtractor(T component,AbstractComponentInspector<T> inspector) {
+		this.component = component;
+		this.inspector = inspector;
 	}
 
-	private static <T> String findFieldNameInHierarchy(T component, T parent, AbstractComponentInspector<T> inspector) {
+	public   Optional<String> getDeclaredFieldNameInParent() {
+		return findFieldNameInHierarchy(inspector.getParent(component));
+	}
+
+	private  Optional<String> findFieldNameInHierarchy(T parent) {
          return Optional.ofNullable(parent)
-			.map(parentComponent ->
+			.flatMap(parentComponent ->
 			  Arrays.stream(parentComponent.getClass().getDeclaredFields())
 					.filter(field -> field.getType() == component.getClass())
 					.map(parentField->  getFieldNameInParent(component, parentComponent, parentField))
 					.filter(Objects::nonNull)
 					.findFirst()
-					.orElseGet(()->findFieldNameInHierarchy(component, inspector.getParent(parent), inspector))
-			).orElse(null);
+					.flatMap((__)->findFieldNameInHierarchy(inspector.getParent(parentComponent)))
+			);
 
 	}
 
 
-	private static String getFieldNameInParent(Object component, Object parent, Field field) {
+	private String getFieldNameInParent(Object component, Object parent, Field field) {
 		try {
 			// Allow access to private fields
 			field.setAccessible(true);
