@@ -104,7 +104,7 @@ public class SwingComponentInspectorHandler {
 			}
 		}
 
-		Component firstComponent = hierarchyNodes.stream().findFirst().orElseThrow();
+		Component firstComponent = hierarchyNodes.iterator().next();
 		if (firstComponent != null) {
 			maxHeight = firstComponent.getPreferredSize().height + firstComponent.getY();
 		}

@@ -9,6 +9,7 @@ import javafx.stage.Popup;
 import javafx.stage.Window;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -46,10 +47,14 @@ public class FXComponentInspectorHandler {
 
 
 	private void inspectAllWindows() {
-		Window.getWindows().stream().filter(window -> window != popup && !handledWindows.contains(window)).forEach(window -> {
-			handledWindows.add(window);
-			window.addEventFilter(MouseEvent.MOUSE_MOVED, event -> handle(event, window.getScene()));
-		});
+		Iterator<Window> windowIterator = Window.impl_getWindows();
+		while (windowIterator.hasNext()) {
+			Window window = windowIterator.next();
+			if (window != popup && window.isShowing() && !handledWindows.contains(window)) {
+				handledWindows.add(window);
+				window.addEventFilter(MouseEvent.MOUSE_MOVED, event -> handle(event, window.getScene()));
+			}
+		}
 	}
 
 	private void inspectNode(Node node) {

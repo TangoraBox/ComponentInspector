@@ -42,7 +42,7 @@ public class FXComponentInspector extends AbstractComponentInspector<Node> {
     @Override
     protected Node createStylesComponent(Node component) {
         String labelText = String.join(", ",component.getStyleClass());
-        if (labelText.isBlank()) {
+        if (labelText.isEmpty()) {
             labelText = "(empty)";
         }
         Label result = new Label(labelText);
