@@ -3,6 +3,8 @@
 > A Tool for help you to inspect the location and properties of certain components in a window hierarchy
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Build Status](https://travis-ci.com/TangoraBox/ComponentInspector.svg?branch=master)](https://travis-ci.com/TangoraBox/ComponentInspector)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.tangorabox%3Acomponent-inspector&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.tangorabox%3Acomponent-inspector)
 
 ***JavaFX Component Inspector***
 
