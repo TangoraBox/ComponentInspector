@@ -1,0 +1,10 @@
+languague: java
+addons:
+  sonarcloud:
+    organization: "tangorabox"
+    token:
+      secure: o01jbtHQsi4RTmgtTAAOb45Cv9tlEpuAvi5ZIMlobxSNivMsf7IRmyYlJ/rHPU6pg27pp1Yh1pm/DNnWkPHGwz3VzjnnlkbjgQ9eb7FDDv56axbMhDQ+QvJ+9T+V+Q03tagY0ZbfVZoJ4IMLIevrfVXpXbl2HYpqTWdkTXH33nlpt8nQUIpgk1i/5MWd11pIEPyQYo4XuZXMJ5+JjH+UUcY/HzvXeik9RzWoy3giX97Fey1KAoAtQ+J7D1S+A50sqcDV9eCTqPIKnSzfoKzkxZbFdGWKQ87lrurYMF/feJ0MJ1NG6UFArE+SKm6euvZz2NbMa/jCt3W/fz1pXrS8wtblnNdJ3bl4DK7IIkkfJiDPcQyNKJqe++CbAnzMdxYr7A6X4czVbE63rJ8ALzV1Ttm2r8bDXAstg7G1BPO7pxhZs7eS731bwamrFzoZMlgFajnZyDTACiDs+kDSLdi6e+WsoGPAJJT3n3Ny2+6NA1mOVpn7JVpYPCUZGEzaTjakZ4Q+M2aeZqRj/Ky/jSP6tUVQ6/Jam+2Bq6WqUbJoFinWN8Onrc8ceMJkceiy9gLF0U1+6y21KglvYzo/8jpG5FFNejTPHAY0+lj5ZD9kBCsyJKSqCiIYZF6sfjcJTZRRKfdLmy1sSH4TrYw6HTtlJl10BgdrDmL0oQzcvY0+qtQ=
+
+script:
+  # the following command line builds the project and then execute the SonarCloud analysis
+  - mvn clean install sonar:sonar
