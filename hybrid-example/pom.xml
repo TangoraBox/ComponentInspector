@@ -4,33 +4,33 @@
     <parent>
         <groupId>com.tangorabox</groupId>
         <artifactId>component-inspector</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>hybrid-example</artifactId>
     <name>hybrid-example</name>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <dependencies>
         <dependency>
             <groupId>com.tangorabox</groupId>
             <artifactId>component-inspector-fx</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.tangorabox</groupId>
             <artifactId>component-inspector-swing</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.tangorabox</groupId>
             <artifactId>javafx-example</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.tangorabox</groupId>
             <artifactId>swing-example</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
