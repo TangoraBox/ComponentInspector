@@ -1,8 +1,10 @@
 package com.tangorabox.componentinspector.core;
 
+import java.util.Optional;
+
 public class ComponentDetails<T> {
 
-    private T fieldNameComponent;
+    private T fieldNameComponent = null;
     private T classComponent;
     private T stylesComponent;
 
@@ -27,8 +29,8 @@ public class ComponentDetails<T> {
         this.fieldNameComponent = fieldNameComponent;
     }
 
-    public T getFieldNameComponent() {
-        return fieldNameComponent;
+    public Optional<T> getFieldNameComponent() {
+        return Optional.ofNullable(fieldNameComponent);
     }
 
     public void setClassComponent(T classComponent) {

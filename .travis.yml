@@ -1,0 +1,14 @@
+languague: java
+addons:
+  sonarcloud:
+    organization: "tangorabox"
+
+script:
+  # the following command line builds the project and then execute the SonarCloud analysis
+  - mvn clean install sonar:sonar -Dsonar.login=${SONAR_TOKEN}
+
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'

@@ -2,7 +2,9 @@
 
 > A Tool for help you to inspect the location and properties of certain components in a window hierarchy
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](https://opensource.org/licenses/LGPL-3.0)
+[![Build Status](https://travis-ci.com/TangoraBox/ComponentInspector.svg?branch=master)](https://travis-ci.com/TangoraBox/ComponentInspector)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.tangorabox%3Acomponent-inspector&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.tangorabox%3Acomponent-inspector)
 
 ***JavaFX Component Inspector***
 
@@ -40,34 +42,58 @@ SwingComponentInspectorHandler.handleAll();
 
 ---
 
-## Installation 
-
-> Currently, I've created the artifact for openjdk 11+ and openjfx 11+ but if you need target java 8 version, please open an issue.
-
-### Maven
+## Installation with Maven
 
 The artifacts have been published to maven central
 
-***FXComponentInspector***
+
+### FXComponentInspector
+
+***Java 11+***
 
 ```xml
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
-***SwingComponentInspector***
+***Java 8***
+
+```xml
+<dependency>
+    <groupId>com.tangorabox</groupId>
+    <artifactId>component-inspector-fx</artifactId>
+    <version>1.0.1-java8</version>
+</dependency>
+```
+
+---
+
+### SwingComponentInspector
+
+***Java 11+***
 
 ```xml
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
+***Java 8***
+
+```xml
+<dependency>
+    <groupId>com.tangorabox</groupId>
+    <artifactId>component-inspector-swing</artifactId>
+    <version>1.0.1-java8</version>
+</dependency>
+```
+
+---
 
 ## Features
 
@@ -110,6 +136,4 @@ Reach out to me at one of the following places!
 
 ## License
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
-- **[GPL v3](https://opensource.org/licenses/gpl-3.0.html)**
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](https://opensource.org/licenses/LGPL-3.0)
