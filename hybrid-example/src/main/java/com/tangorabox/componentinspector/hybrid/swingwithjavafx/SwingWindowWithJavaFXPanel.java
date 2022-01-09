@@ -41,7 +41,7 @@ public class SwingWindowWithJavaFXPanel extends JPanel {
     }
 
     private Component createUpPanel() {
-        return new JComboBox<String>(new String[]{"One", "Two", "Tree"});
+        return new JComboBox<>(new String[]{"One", "Two", "Tree"});
     }
 
     private Component createPanelDown() {

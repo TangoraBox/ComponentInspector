@@ -35,7 +35,7 @@ public abstract class AbstractComponentInspector<T> {
 
 	private ComponentDetails<T> createComponentDetails(T component) {
 		ComponentDetails<T> details = new ComponentDetails<>();
-		details.setFieldNameComponent(createFieldNameComponent(component).orElseGet(()->null));
+		details.setFieldNameComponent(createFieldNameComponent(component).orElse(null));
 		details.setClassComponent(createClassComponent(component));
 		details.setStylesComponent(createStylesComponent(component));
 		return  details;

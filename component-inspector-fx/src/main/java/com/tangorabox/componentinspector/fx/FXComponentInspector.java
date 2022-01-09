@@ -24,7 +24,7 @@ public class FXComponentInspector extends AbstractComponentInspector<Node> {
     @Override
     protected Optional<Node> createFieldNameComponent(Node component) {
         return new ObjectMetadataExtractor<>(component, this).getDeclaredFieldNameInParent()
-                .map((fieldName) -> {
+                .map(fieldName -> {
                     Label result = new Label(fieldName);
                     result.getStyleClass().add(CSSStyleClass.FIELD_COMPONENT.getCssClassName());
                     return result;
@@ -54,11 +54,7 @@ public class FXComponentInspector extends AbstractComponentInspector<Node> {
         HBox result = new HBox(details.getClassComponent(), details.getStylesComponent());
         result.getStyleClass().add(CSSStyleClass.COMPONENT_DETAILS.getCssClassName());
         result.relocate(details.getLocationX(), details.getLocationY());
-
-        if (details.getFieldNameComponent() != null) {
-            result.getChildren().add(details.getFieldNameComponent());
-        }
-
+        details.getFieldNameComponent().ifPresent(fieldNameComponent -> result.getChildren().add(fieldNameComponent));
         return result;
     }
 

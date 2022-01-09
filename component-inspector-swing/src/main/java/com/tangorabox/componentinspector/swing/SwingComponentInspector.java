@@ -27,7 +27,7 @@ public class SwingComponentInspector extends AbstractComponentInspector<Componen
     protected Optional<Component> createFieldNameComponent(Component component) {
          return new ObjectMetadataExtractor<>(component,this)
                  .getDeclaredFieldNameInParent()
-                  .map((fieldName) -> cssStyleDecorator.decorate(new JLabel(fieldName), CSSStyleClass.FIELD_COMPONENT));
+                  .map(fieldName -> cssStyleDecorator.decorate(new JLabel(fieldName), CSSStyleClass.FIELD_COMPONENT));
     }
 
     @Override
@@ -45,10 +45,7 @@ public class SwingComponentInspector extends AbstractComponentInspector<Componen
     protected Component createComponentDetailsPanel(ComponentDetails<Component> details) {
         JPanel jPanel = new JPanel(new FlowLayout());
         jPanel.add(details.getClassComponent());
-        if (details.getFieldNameComponent() != null) {
-            jPanel.add(details.getFieldNameComponent());
-        }
-
+        details.getFieldNameComponent().ifPresent(jPanel::add);
         Component result = cssStyleDecorator.decorate(jPanel, CSSStyleClass.COMPONENT_DETAILS);
         result.setBounds(details.getLocationX(), details.getLocationY(),
                 result.getPreferredSize().width, result.getPreferredSize().height);

@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class JavaFXExampleWithSwingNodeApp extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         JavaFXWindowWithSwingPanel windowPanel = new JavaFXWindowWithSwingPanel();
         primaryStage.setScene(new Scene(windowPanel));
         primaryStage.setWidth(800);
