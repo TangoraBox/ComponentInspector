@@ -55,7 +55,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -65,7 +65,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>1.0-java8</version>
+    <version>1.0.1-java8</version>
 </dependency>
 ```
 
@@ -79,7 +79,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -89,7 +89,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>1.0-java8</version>
+    <version>1.0.1-java8</version>
 </dependency>
 ```
 
