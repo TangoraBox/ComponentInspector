@@ -4,18 +4,18 @@
     <parent>
         <groupId>com.tangorabox</groupId>
         <artifactId>component-inspector</artifactId>
-        <version>1.0.2-java8</version>
+        <version>1.0.3-java8-SNAPSHOT</version>
     </parent>
 
     <artifactId>swing-example</artifactId>
     <name>swing-example</name>
-    <version>1.0.2-java8</version>
+    <version>1.0.3-java8-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>com.tangorabox</groupId>
             <artifactId>component-inspector-swing</artifactId>
-            <version>1.0.2-java8</version>
+            <version>1.0.3-java8-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
