@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.tangorabox</groupId>
         <artifactId>component-inspector</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>component-inspector-core</artifactId>
     <name>component-inspector-core</name>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
 </project>
