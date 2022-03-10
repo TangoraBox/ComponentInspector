@@ -55,7 +55,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -65,7 +65,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>1.0.3-java8</version>
+    <version>1.1.0-java8</version>
 </dependency>
 ```
 
@@ -79,7 +79,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -89,7 +89,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>1.0.3-java8</version>
+    <version>1.1.0-java8</version>
 </dependency>
 ```
 
@@ -101,7 +101,7 @@ The artifacts have been published to maven central
 - Field name of component declaration in parent (when possible) [![css-class](doc/images/field-name.png)]()
 - The inspected component is highlighted _(since v1.0.3)_
 
-## Usage 
+## Usage
 
 > The inspector window is only shown if you hold down the CONTROL key when you move the mouse
 
@@ -118,7 +118,7 @@ The artifacts have been published to maven central
 
 | <a href="https://github.com/garzy" target="_blank">**GaRzY**</a> | 
 | :---: 
-| [![GaRzY](https://avatars0.githubusercontent.com/u/10849239?s=200)](https://github.com/garzy)   
+| [![GaRzY](https://avatars0.githubusercontent.com/u/10849239?s=200)](https://github.com/garzy)
 | <a href="https://github.com/garzy" target="_blank">`github.com/garzy`</a> | 
 
 
