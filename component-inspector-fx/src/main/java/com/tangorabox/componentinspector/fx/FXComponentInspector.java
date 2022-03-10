@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import java.util.List;
 import java.util.Optional;
 
-public class FXComponentInspector extends AbstractComponentInspector<Node> {
+class FXComponentInspector extends AbstractComponentInspector<Node> {
 
     @Override
     protected Node getParent(Node component) {

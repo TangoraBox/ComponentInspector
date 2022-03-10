@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
-public class SwingComponentInspector extends AbstractComponentInspector<Component> {
+class SwingComponentInspector extends AbstractComponentInspector<Component> {
 
     private final SwingCSSStyleDecorator cssStyleDecorator = new SwingCSSStyleDecorator();
 
