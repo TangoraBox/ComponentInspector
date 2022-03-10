@@ -1,0 +1,5 @@
+.highlight-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: blue;
+    -fx-border-style: dotted;
+}

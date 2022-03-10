@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import java.util.List;
 import java.util.Optional;
 
-public class FXComponentInspector extends AbstractComponentInspector<Node> {
+class FXComponentInspector extends AbstractComponentInspector<Node> {
 
     @Override
     protected Node getParent(Node component) {
@@ -62,7 +62,7 @@ public class FXComponentInspector extends AbstractComponentInspector<Node> {
     protected void buildCascade(List<ComponentDetails<Node>> hierarchy) {
         for (int componentLevel = 0, componentIndex = hierarchy.size() - 1; componentIndex >= 0; componentIndex--, componentLevel++) {
             ComponentDetails<Node> componentChild = hierarchy.get(componentIndex);
-            componentChild.setLocation(componentLevel * HORIZONTAL_SPACING, componentLevel * VERTICAL_SPACING);
+            componentChild.setLocation(componentLevel * HORIZONTAL_SPACING, componentLevel * (VERTICAL_SPACING + 5));
         }
     }
 
