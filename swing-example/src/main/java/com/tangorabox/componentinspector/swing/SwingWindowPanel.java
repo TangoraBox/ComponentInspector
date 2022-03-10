@@ -5,6 +5,9 @@ import java.awt.*;
 
 public class SwingWindowPanel extends JPanel {
 
+    private final JPanel helloWorldPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private final JLabel helloWorldLabel = new JLabel("Hello World!!");
+
     private final Component panelUp = createUpPanel();
     private final Component panelDown = createPanelDown();
     private final Component panelLeft = createPanelLeft();
@@ -21,7 +24,7 @@ public class SwingWindowPanel extends JPanel {
     }
 
     private Component createUpPanel() {
-        return new JComboBox<String>(new String[]{"One", "Two", "Tree"});
+        return new JComboBox<>(new String[]{"One", "Two", "Tree"});
     }
 
     private Component createPanelDown() {
@@ -61,9 +64,8 @@ public class SwingWindowPanel extends JPanel {
             targetPanel.add(child);
             targetPanel = child;
         }
-
-        JPanel helloWorldPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        helloWorldPanel.add(new JLabel("Hello World!!"));
+        
+        helloWorldPanel.add(helloWorldLabel);
         targetPanel.add(helloWorldPanel, BorderLayout.CENTER);
 
         return result;

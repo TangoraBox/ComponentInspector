@@ -6,11 +6,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class SwingComponentInspectorHandler {
 
-	public static final int OFFSET = 25;
+	private static final int OFFSET = 25;
 	private final JDialog popup = new JDialog();
+	private final JDialog highlightPopup = new JDialog();
 	private final JPanel pane = new JPanel(null);
 	private final SwingComponentInspector componentInspector = new SwingComponentInspector();
 
@@ -34,11 +36,17 @@ public class SwingComponentInspectorHandler {
 
 
 	private SwingComponentInspectorHandler() {
+		initPopup(popup);
+		initPopup(highlightPopup);
+		highlightPopup.getRootPane().setBorder(BorderFactory.createDashedBorder(Color.BLUE));
+		popup.getContentPane().add(pane, BorderLayout.CENTER);
+		pane.setOpaque(false);
+	}
+
+	private void initPopup(JDialog popup) {
 		popup.setAlwaysOnTop(true);
 		popup.setUndecorated(true);
 		popup.setBackground(new Color(0, 0, 0, 0));
-		popup.getContentPane().add(pane, BorderLayout.CENTER);
-		pane.setOpaque(false);
 		popup.setFocusableWindowState(false);
 	}
 
@@ -61,26 +69,47 @@ public class SwingComponentInspectorHandler {
 
 		if (!mouseEvent.isControlDown()) {
 			popup.setVisible(false);
+			highlightPopup.setVisible(false);
 			return;
 		}
 
-		Point location = MouseInfo.getPointerInfo().getLocation();
-
-		Component targetComponent;
-		Window window = findWindow();
-		if (window != null) {
-			SwingUtilities.convertPointFromScreen(location, window);
-			targetComponent = SwingUtilities.getDeepestComponentAt(window, location.x, location.y);
-		} else {
-			SwingUtilities.convertPointFromScreen(location, mouseEvent.getComponent());
-			targetComponent = SwingUtilities.getDeepestComponentAt(mouseEvent.getComponent(), location.x, location.y);
-		}
-
-		List<Component> hierarchyNodes = componentInspector.inspect(targetComponent);
+		final Component componentUnderMouse = findComponentUnderMouse(mouseEvent);
+		List<Component> hierarchyNodes = componentInspector.inspect(componentUnderMouse);
 		if (hierarchyNodes.isEmpty()) {
 			popup.setVisible(false);
-			return;
+			highlightPopup.setVisible(false);
+		} else {
+			highlightComponent(componentUnderMouse);
+			showHierarchyPopup(hierarchyNodes);
 		}
+	}
+
+
+	private void highlightComponent(Component componentUnderMouse) {
+		final Rectangle bounds = componentUnderMouse.getBounds();
+		highlightPopup.getContentPane().setPreferredSize(new Dimension(bounds.width, bounds.height));
+		highlightPopup.setSize(bounds.width, bounds.height);
+		highlightPopup.setVisible(true);
+		highlightPopup.setLocation(componentUnderMouse.getLocationOnScreen());
+	}
+
+	private Component findComponentUnderMouse(MouseEvent mouseEvent) {
+		final Point location = MouseInfo.getPointerInfo().getLocation();
+		final Component topLevelAncestor = findWindowUnderMouse().orElse(mouseEvent.getComponent());
+		SwingUtilities.convertPointFromScreen(location, topLevelAncestor);
+		return SwingUtilities.getDeepestComponentAt(topLevelAncestor, location.x, location.y);
+	}
+
+	private static Optional<Component> findWindowUnderMouse() {
+		for (Window window : Window.getWindows()) {
+			if (window.getMousePosition(true) != null) {
+				return Optional.of(window);
+			}
+		}
+		return Optional.empty();
+	}
+
+	private void showHierarchyPopup(List<Component> hierarchyNodes) {
 		Dimension panelSize = calculatePanelSize(hierarchyNodes);
 		pane.invalidate();
 		pane.removeAll();
@@ -95,30 +124,14 @@ public class SwingComponentInspectorHandler {
 	}
 
 	private Dimension calculatePanelSize(List<Component> hierarchyNodes) {
-		int maxWidth = 0;
-		int maxHeight = 0;
-		for (Component hierarchyNode : hierarchyNodes) {
-			int componentWidth = hierarchyNode.getX() + hierarchyNode.getPreferredSize().width;
-			if (componentWidth > maxWidth) {
-				maxWidth = componentWidth;
-			}
-		}
+		final int maxWidth = hierarchyNodes.stream()
+				.mapToInt(hierarchyNode -> hierarchyNode.getX() + hierarchyNode.getPreferredSize().width)
+				.max().orElse(0);
 
-		Component firstComponent = hierarchyNodes.stream().findFirst().orElseThrow();
-		if (firstComponent != null) {
-			maxHeight = firstComponent.getPreferredSize().height + firstComponent.getY();
-		}
+		final int maxHeight = hierarchyNodes.stream().findFirst()
+				.map(firstComponent -> firstComponent.getPreferredSize().height + firstComponent.getY())
+				.orElse(0);
 
 		return new Dimension(maxWidth, maxHeight);
-	}
-
-	private static Window findWindow() {
-		for (Window window : Window.getWindows()) {
-			if (window.getMousePosition(true) != null) {
-				return window;
-			}
-		}
-
-		return null;
 	}
 }

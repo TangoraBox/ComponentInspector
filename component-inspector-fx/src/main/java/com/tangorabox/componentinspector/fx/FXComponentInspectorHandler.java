@@ -1,6 +1,6 @@
 package com.tangorabox.componentinspector.fx;
 
-import javafx.event.EventTarget;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -10,13 +10,16 @@ import javafx.stage.Window;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class FXComponentInspectorHandler {
 
-	public static final int OFFSET = 25;
+	private static final int OFFSET = 25;
 	private final Popup popup = new Popup();
+	private final Popup highlightPopup = new Popup();
 	private final Pane pane = new Pane();
+	private final Pane highlightPane = new Pane();
 	private final FXComponentInspector componentInspector = new FXComponentInspector();
 	private final Set<Window> handledWindows = new HashSet<>();
 	private Scene currentScene = null;
@@ -41,12 +44,17 @@ public class FXComponentInspectorHandler {
 	private FXComponentInspectorHandler() {
 		popup.getContent().add(pane);
 		pane.getStyleClass().add("content-pane");
-		pane.getStylesheets().add(this.getClass().getResource("/component-inspector.css").toExternalForm());
+		pane.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/component-inspector.css")).toExternalForm());
+
+		highlightPopup.getContent().add(highlightPane);
+		highlightPane.getStyleClass().add("highlight-pane");
+		highlightPane.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/highlight.css")).toExternalForm());
+
 	}
 
 
 	private void inspectAllWindows() {
-		Window.getWindows().stream().filter(window -> window != popup && !handledWindows.contains(window)).forEach(window -> {
+		Window.getWindows().stream().filter(window -> window != popup && window != highlightPopup && !handledWindows.contains(window)).forEach(window -> {
 			handledWindows.add(window);
 			window.addEventFilter(MouseEvent.MOUSE_MOVED, event -> handle(event, window.getScene()));
 		});
@@ -60,20 +68,38 @@ public class FXComponentInspectorHandler {
 	private void handle(MouseEvent event, Scene scene) {
 		if (!event.isControlDown()) {
 			popup.hide();
+			highlightPopup.hide();
 			return;
 		}
-		EventTarget target = event.getTarget();
-		List<Node> hierarchyNodes = componentInspector.inspect((Node) target);
-		if (scene == null) {
-			scene = ((Node) target).getScene();
+
+		if (!(event.getTarget() instanceof Node)) {
+			return;
 		}
+
+		Node componentUnderMouse = (Node) event.getTarget();
+		if (scene == null) {
+			scene = componentUnderMouse.getScene();
+		}
+
+		List<Node> hierarchyNodes = componentInspector.inspect(componentUnderMouse);
+
 		pane.getChildren().setAll(hierarchyNodes);
 		popup.sizeToScene();
 		if (currentScene != scene) {
 			popup.hide();
+			highlightPopup.hide();
 			currentScene = scene;
 		}
+		highlightComponent(componentUnderMouse, scene);
 		popup.show(scene.getRoot(), event.getScreenX() - pane.getWidth(), event.getScreenY() - pane.getHeight() - OFFSET);
 		inspectAllWindows();
 	}
+
+	private void highlightComponent(Node component, Scene scene) {
+		final Bounds bounds = component.localToScreen(component.getBoundsInLocal());
+		highlightPane.setPrefSize(bounds.getWidth(), bounds.getHeight());
+		highlightPopup.sizeToScene();
+		highlightPopup.show(scene.getRoot(), bounds.getMinX(), bounds.getMinY());
+	}
+
 }
