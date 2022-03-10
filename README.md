@@ -55,7 +55,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -65,7 +65,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-fx</artifactId>
-    <version>1.0.2-java8</version>
+    <version>1.0.3-java8</version>
 </dependency>
 ```
 
@@ -79,7 +79,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -89,7 +89,7 @@ The artifacts have been published to maven central
 <dependency>
     <groupId>com.tangorabox</groupId>
     <artifactId>component-inspector-swing</artifactId>
-    <version>1.0.2-java8</version>
+    <version>1.0.3-java8</version>
 </dependency>
 ```
 
@@ -97,9 +97,9 @@ The artifacts have been published to maven central
 
 ## Features
 
-- css class name in javafx node components [![css-class](doc/images/css-class.png)]()
-
-- field name of component declaration in parent (when possible) [![css-class](doc/images/field-name.png)]()
+- CSS class name in javafx node components [![css-class](doc/images/css-class.png)]()
+- Field name of component declaration in parent (when possible) [![css-class](doc/images/field-name.png)]()
+- The inspected component is highlighted _(since v1.0.3)_
 
 ## Usage 
 
