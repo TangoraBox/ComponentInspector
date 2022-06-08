@@ -1,10 +1,30 @@
 # Java Desktop (JavaFX and Swing) Component Inspector
 
-> A Tool for help you to inspect the location and properties of certain components in a window hierarchy
+> A Tool for help you to inspect the location and some properties (see features section) of the component under mouse, in a window hierarchy
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](https://opensource.org/licenses/LGPL-3.0)
 [![Build Status](https://travis-ci.com/TangoraBox/ComponentInspector.svg?branch=master)](https://travis-ci.com/TangoraBox/ComponentInspector)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.tangorabox%3Acomponent-inspector&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.tangorabox%3Acomponent-inspector)
+
+
+## Features
+
+- CSS class name in javafx node components [![css-class](doc/images/css-class.png)]()
+- Field name of component declaration in parent (when possible) [![css-class](doc/images/field-name.png)]()
+- The inspected component is highlighted _(since v1.1.0)_
+---
+
+## Usage
+
+> The inspector window is only shown if you hold down the CONTROL key when you move the mouse
+
+---
+
+## Example Demo
+
+![Example Demo](doc/images/demo.gif)
+
+## ScreenShots
 
 ***JavaFX Component Inspector***
 
@@ -22,19 +42,23 @@
 
 [![FXInspector](doc/images/SwingWithJavaFXPanel.png)]()
 
-***Example Demo***
-
-![Example Demo](doc/images/demo.gif)
-
 ---
 
-## Java FX Example
+## How to use
+
+Simple, one line of code to handle all:
+
+***Java FX Example***
+
+Add this line in the `public void start(Stage primaryStage)` of your main JavaFX class that extends `Application`:
 
 ```java
 FXComponentInspectorHandler.handleAll();
 ```
 
-## Swing Example
+***Swing Example***
+
+Add this line in the `public static void main(String[] args)` of your application launch class:
 
 ```java
 SwingComponentInspectorHandler.handleAll();
@@ -42,9 +66,9 @@ SwingComponentInspectorHandler.handleAll();
 
 ---
 
-## Installation with Maven
+## Library import with Maven
 
-The artifacts have been published to maven central
+The artifacts have been published to maven central:
 
 
 ### FXComponentInspector
@@ -95,17 +119,6 @@ The artifacts have been published to maven central
 
 ---
 
-## Features
-
-- CSS class name in javafx node components [![css-class](doc/images/css-class.png)]()
-- Field name of component declaration in parent (when possible) [![css-class](doc/images/field-name.png)]()
-- The inspected component is highlighted _(since v1.0.3)_
-
-## Usage 
-
-> The inspector window is only shown if you hold down the CONTROL key when you move the mouse
-
----
 
 ## Contributing
 
@@ -129,7 +142,6 @@ The artifacts have been published to maven central
 Reach out to me at one of the following places!
 
 - Mail to [info@tangorabox.com](mailto:info@tangorabox.com)
-- Twitter at <a href="http://twitter.com/garzydj" target="_blank">`@garzydj`</a>
 
 ---
 
